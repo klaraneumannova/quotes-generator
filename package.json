@@ -1,0 +1,19 @@
+{
+  "name": "tailwind-css-boilerplate",
+  "version": "1.0.0",
+  "description": "Simple Tailwind CSS boilerplate.",
+  "main": "index.html",
+  "scripts": {
+    "build-dev": "npx tailwindcss-cli@latest build ./src/css/base.css -o ./public/css/tailwind.css",
+    "build-prod": "NODE_ENV=production npx tailwindcss-cli@latest build ./src/css/base.css -o ./public/css/tailwind.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.3",
+    "tailwindcss-cli": "^0.1.2"
+  }
+}
