@@ -1,15 +1,29 @@
 const refreshBtn = document.querySelector('#refresh');
-refreshBtn.addEventListener('click', () => {    
-    let quote = document.querySelector('#quote');
-    let author = document.querySelector('#author');
+const quoteEl = document.querySelector('#quote');
+const authorEl = document.querySelector('#author');
 
-    const quoteId = quote.getAttribute('data-id');
+const getRandomQuote = () => {
+    const quoteId = quoteEl.getAttribute('data-id');
     let randomNumber = Math.floor(Math.random() * QUOTES.length);
-    while(+quoteId === randomNumber) {
-        randomNumber = Math.floor(Math.random() * QUOTES.length);
+    if (quoteId) {
+        while(+quoteId === randomNumber) {
+            randomNumber = Math.floor(Math.random() * QUOTES.length);
+        }
     }
+    return QUOTES[randomNumber];
+}
 
-    quote.innerHTML = QUOTES[randomNumber].quote;
-    quote.setAttribute('data-id', randomNumber);
-    author.innerHTML = QUOTES[randomNumber].author;
+const setRandomQuote = () => {
+    const quote = getRandomQuote();
+
+    quoteEl.setAttribute('data-id', quote.id);
+    quoteEl.innerHTML = `"${quote.quote}"`;
+    authorEl.innerHTML = quote.author;
+}
+
+setRandomQuote();
+
+refreshBtn.addEventListener('click', () => {    
+    setRandomQuote();
 })
+
